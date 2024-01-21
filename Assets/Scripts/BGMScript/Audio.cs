@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Audio : MonoBehaviour
 {
-    AudioSource BGM;
+    public static Audio instance;
+
+    public AudioSource BGM;
     public AudioClip Intro;
     public AudioClip Loop;
     // Start is called before the first frame update
@@ -17,6 +19,7 @@ public class Audio : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         BGM = GetComponent<AudioSource>();
         BGM.Stop();
         BGM.volume = 0.5f;
@@ -49,4 +52,10 @@ public class Audio : MonoBehaviour
             }
         }
     }
+
+    public void SoundVolume(float volume)
+    {
+        BGM.volume = volume;
+    }
+
 }

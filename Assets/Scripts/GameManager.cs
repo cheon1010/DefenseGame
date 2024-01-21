@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     public GameObject PauseSquare;
     SpriteRenderer spriteRenderer;
 
+    public GameObject OptionPanel;
 
     public Text ManaText;
     GameObject BGM;
@@ -83,9 +84,8 @@ public class GameManager : MonoBehaviour
         NEC.SetActive(false);
         BannedUnit.SetActive(false);
         PosBanned.SetActive(false);
-        BatchCountText.text = "남은 배치가능 수 : " + BatchCount;
+        BatchCountText.text = "배치가능 수 : " + BatchCount;
         Invoke("StartBattleBGM", 1.2f);
-        //SPanel = GameObject.Find("SurrenderPanel");
         spriteRenderer = PauseSquare.GetComponent<SpriteRenderer>();
     }
 
@@ -93,8 +93,6 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         instance = this;
-        //BGM = GameObject.Find("BGMManager");
-        //BattleBGM = BGM.GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -107,7 +105,7 @@ public class GameManager : MonoBehaviour
         LeftEnemy.text = EnemyCount.ToString() + " / "+EnemyFullCount.ToString();
         StopCreateMonster();
         UIPActive();
-        BatchCountText.text = "남은 배치가능 수 : " + BatchCount;
+        BatchCountText.text = "배치가능 수 : " + BatchCount;
         ManaText.text = Mana.ToString();
         SignalRotate();
         CameraZoom();
@@ -200,7 +198,7 @@ public class GameManager : MonoBehaviour
             UIP.SetActive(true);
             UnitSprite.sprite = BatchUnit.GetComponent<UnitControl>().USP;
             UName.text = BatchUnit.GetComponent<UnitControl>().UName;
-            ULevel.text = BatchUnit.GetComponent<UnitControl>().Level.ToString();
+            ULevel.text = "Level. " + BatchUnit.GetComponent<UnitControl>().Level.ToString();
             UOccupation.text = "직업군"+" "+BatchUnit.GetComponent<UnitControl>().UOccupation;
             UHP.text ="체력 : "+ BatchUnit.GetComponent<UnitControl>().UHp.ToString() + " / " +
                 BatchUnit.GetComponent<UnitControl>().MaxUHp.ToString();
@@ -237,14 +235,9 @@ public class GameManager : MonoBehaviour
                 {
                     MCamera.orthographicSize = 3f;
                 }
-                /*
-                MCamera.transform.position = new Vector3(BatchUnit.transform.position.x,
-                    BatchUnit.transform.position.y, MCamera.transform.position.z);
-                */
             }
             else if (UIT == false)
             {
-                //MCamera.transform.position = new Vector3(0, 0, MCamera.transform.position.z);
                 MCamera.transform.position = Vector3.SmoothDamp(BUT.transform.position, new Vector3(0, 0, MCamera.transform.position.z),
                     ref velocity, -0.1f);
                 MCamera.orthographicSize += 0.2f;
@@ -255,41 +248,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
-        /*
-        if(UIT==true)
-        {
-            if(MCamera.orthographicSize>3f)
-            {
-                MCamera.transform.position = Vector3.SmoothDamp(MCamera.transform.position, BUT.transform.position,
-                ref velocity, 0.1f);
-                MCamera.orthographicSize -= 0.2f;
-                if (MCamera.orthographicSize <= 3f)
-                {
-                    MCamera.orthographicSize = 3f;
-                }
-            }
-            else if (MCamera.orthographicSize<=3f)
-            {
-                MCamera.orthographicSize = 3f;
-            }
-            /*
-            MCamera.transform.position = new Vector3(BatchUnit.transform.position.x,
-                BatchUnit.transform.position.y, MCamera.transform.position.z);
-        }
-        else if(UIT==false)
-        {
-            //MCamera.transform.position = new Vector3(0, 0, MCamera.transform.position.z);
-            MCamera.transform.position = Vector3.SmoothDamp(BUT.transform.position, new Vector3(0, 0, MCamera.transform.position.z),
-                ref velocity, -0.1f);
-            MCamera.orthographicSize += 0.2f;
-            if(MCamera.orthographicSize>=5f)
-            {
-                MCamera.orthographicSize=5f;
-                MCamera.transform.position = new Vector3(0, 0, -10);
-            }
-        }
-        */
     }
 
     public void SurrenderPanelOn()
@@ -299,10 +257,6 @@ public class GameManager : MonoBehaviour
 
     public void SurrenderFunctionYes()
     {
-        /*
-        if(PauseCanvas.activeSelf==true)
-            PauseCanvas.SetActive(false);
-        */
         SPanel.SetActive(false);
         animator.SetBool("Fade", true);
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime>=1f)
@@ -310,10 +264,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;
             Invoke("SurrenderScene", 1f);
         }
-        //Time.timeScale = 0.5f;
-        //Invoke("SurrenderScene", 0.5f);
-        // 일시정지에서 포기하기 클릭 -> Time.timeScale이 0인 상태이기때문에 애니메이션이 재생되지 않아서 포기기능이 실행되지않음
-        // Animator의 UpdateMode를 Unscaled Time으로 변경
     }
     public void SurrenderFunctionNo()
     {
@@ -324,6 +274,12 @@ public class GameManager : MonoBehaviour
     public void SurrenderScene()
     {
         SceneManager.LoadScene("LobbyScene");
+    }
+
+    public void OptionOn()
+    {
+        if (OptionPanel.activeSelf == false)
+            OptionPanel.SetActive(true);
     }
 
 }

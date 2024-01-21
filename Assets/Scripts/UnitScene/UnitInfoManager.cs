@@ -42,14 +42,6 @@ public class UnitInfoManager : MonoBehaviour
     {
         UnitInfoManager.instance = this;
         UnitInfoPanel.SetActive(false);
-        /*
-        UnitImage.sprite = selectUnit.GetComponent<UnitControl>().USP;
-        UName = selectUnit.GetComponent<UnitControl>().UName;
-        UOccu = selectUnit.GetComponent<UnitControl>().UOccupation;
-        UMaxHP = selectUnit.GetComponent<UnitControl>().MaxUHp;
-        UAtk = selectUnit.GetComponent<UnitControl>().UAtk;
-        UCost = selectUnit.GetComponent<UnitControl>().Cost;
-        */
     }
 
     // Update is called once per frame
@@ -81,6 +73,15 @@ public class UnitInfoManager : MonoBehaviour
             DefaultAttack.text = "공    격    력 : " + UAtk.ToString();
             DefaultCC.text = "저지가능 수 : " + UCC.ToString();
             DefaultCost.text = "배 치   비 용 : " + UCost.ToString();
+        }
+
+        if (Application.platform == RuntimePlatform.Android)
+
+        {
+
+            if (Input.GetKey(KeyCode.Escape))
+                GotoLobbyScene();
+
         }
     }
 

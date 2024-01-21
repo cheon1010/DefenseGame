@@ -140,7 +140,6 @@ public class MonsterMove : MonoBehaviour
             {
                 Instantiate(exp);
             }
-            //GameManager.instance.Mana += Random.RandomRange(5, 10);
         }
     }
 
@@ -196,15 +195,6 @@ public class MonsterMove : MonoBehaviour
                 }
             }
         }
-        /*
-        else if (collision.gameObject.tag == "Point")
-        {
-            gameObject.SetActive(false);
-            Debug.Log("몬스터 기지 침입");
-            GameManager.instance.EnemyCount += 1;
-            GameManager.instance.BaseHPCount -= 1;
-        }
-        */
             
         if(collision.gameObject.tag=="Enemy")
         {

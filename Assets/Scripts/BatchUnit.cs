@@ -32,12 +32,6 @@ public class BatchUnit : MonoBehaviour
     private void Update()
     {
         BatchUnitData();
-        /*
-        OnButtonDown();
-        if (GameManager.instance.UIT == true)
-            BatchUnitInfo_Runtime();
-        */
-        //EnchantButton.onClick.AddListener(UnitEnchant);
     }
 
     public void BatchUnitData()
@@ -49,17 +43,7 @@ public class BatchUnit : MonoBehaviour
 
     public void BatchInfoButton()
     {
-        /*
-            Debug.Log("클릭");
-            GameManager.instance.UIT = true;
-            GameManager.instance.UnitSprite.sprite = gameObject.transform.GetChild(i).gameObject.GetComponent<UnitControl>().USP;
-            GameManager.instance.UName.text = gameObject.transform.GetChild(i).gameObject.GetComponent<UnitControl>().UName;
-            GameManager.instance.UOccupation.text = gameObject.transform.GetChild(i).gameObject.GetComponent<UnitControl>().UOccupation;
-            GameManager.instance.UHP.text = gameObject.transform.GetChild(i).gameObject.GetComponent<UnitControl>().UHp.ToString() + " / " + gameObject.transform.GetChild(i).gameObject.GetComponent<UnitControl>().MaxUHp.ToString();
-            GameManager.instance.UATK.text = gameObject.transform.GetChild(i).gameObject.GetComponent<UnitControl>().UAtk.ToString();
-            GameManager.instance.UnitCC.text = gameObject.transform.GetChild(i).gameObject.GetComponent<UnitControl>().Max_CC.ToString();
-            GameManager.instance.UCost.text = gameObject.transform.GetChild(i).gameObject.GetComponent<UnitControl>().Cost.ToString();
-            */
+        
         Debug.Log("클릭");
         GameManager.instance.UIT = true;
     }
@@ -87,37 +71,7 @@ public class BatchUnit : MonoBehaviour
             {
                 GameManager.instance.UIT = false;
             });
-        }/*
-        InfoButton.onClick.AddListener(() =>
-        {
-            if(GameManager.instance.UIT==false)
-            {
-                Debug.Log(BU.ToString() + "의 상태를 불러옵니다.");
-                GameManager.instance.UIT = true;
-                GameManager.instance.UnitSprite.sprite = BU.GetComponent<UnitControl>().USP;
-                GameManager.instance.UName.text = BU.GetComponent<UnitControl>().UName;
-                GameManager.instance.UOccupation.text = BU.GetComponent<UnitControl>().UOccupation;
-                GameManager.instance.UHP.text = BU.GetComponent<UnitControl>().UHp.ToString() + " / " + BU.GetComponent<UnitControl>().MaxUHp.ToString();
-                GameManager.instance.UATK.text = BU.GetComponent<UnitControl>().UAtk.ToString();
-                GameManager.instance.UnitCC.text = BU.GetComponent<UnitControl>().Max_CC.ToString();
-                GameManager.instance.UCost.text = BU.GetComponent<UnitControl>().Cost.ToString();
-            }
-            else if(GameManager.instance.UIT==true)
-            {
-                GameManager.instance.UIT = false;
-            }
-        */
-            /*
-            Debug.Log(BU.ToString() + "의 상태를 불러옵니다.");
-            GameManager.instance.UIT = true;
-            GameManager.instance.UnitSprite.sprite = BU.GetComponent<UnitControl>().USP;
-            GameManager.instance.UName.text = BU.GetComponent<UnitControl>().UName;
-            GameManager.instance.UOccupation.text = BU.GetComponent<UnitControl>().UOccupation;
-            GameManager.instance.UHP.text = BU.GetComponent<UnitControl>().UHp.ToString() + " / " + BU.GetComponent<UnitControl>().MaxUHp.ToString();
-            GameManager.instance.UATK.text = BU.GetComponent<UnitControl>().UAtk.ToString();
-            GameManager.instance.UnitCC.text = BU.GetComponent<UnitControl>().Max_CC.ToString();
-            GameManager.instance.UCost.text = BU.GetComponent<UnitControl>().Cost.ToString();
-            */
+        }
     }
 
     public void BatchUnitInfo_Runtime()
@@ -148,10 +102,6 @@ public class BatchUnit : MonoBehaviour
                 BU.GetComponent<UnitControl>().UHp = Mathf.RoundToInt(BU.GetComponent<UnitControl>().UHp * 1.25f);
                 BU.GetComponent<UnitControl>().MaxUHp = Mathf.RoundToInt(BU.GetComponent<UnitControl>().MaxUHp * 1.25f);
                 BU.transform.GetChild(1).gameObject.SetActive(true);
-                //BU.transform.GetChild(1).gameObject.GetComponent<Animator>().Play("ESuccess", -1, 0);
-                //BU.GetComponent<UnitControl>().UAtk = BU.GetComponent<UnitControl>().UAtk * 1.5f;
-                //BU.GetComponent<UnitControl>().UHp = BU.GetComponent<UnitControl>().UHp * 1.25f;
-                //BU.GetComponent<UnitControl>().MaxUHp = BU.GetComponent<UnitControl>().MaxUHp * 1.25f;
                 IES();
             }
         }
@@ -170,13 +120,10 @@ public class BatchUnit : MonoBehaviour
                 if (chance <= 80)
                 {
                     BU.GetComponent<UnitControl>().Level += 1;
-                    //BU.GetComponent<UnitControl>().UAtk = BU.GetComponent<UnitControl>().UAtk * 1.5f;
                     BU.GetComponent<UnitControl>().UAtk = Mathf.RoundToInt(BU.GetComponent<UnitControl>().UAtk * 1.5f);
                     BU.GetComponent<UnitControl>().UHp = Mathf.RoundToInt(BU.GetComponent<UnitControl>().UHp * 1.25f);
                     BU.GetComponent<UnitControl>().MaxUHp = Mathf.RoundToInt(BU.GetComponent<UnitControl>().MaxUHp * 1.25f);
                     BU.transform.GetChild(1).gameObject.GetComponent<Animator>().Play("ESuccess", -1, 0);
-                    //BU.GetComponent<UnitControl>().UHp = BU.GetComponent<UnitControl>().UHp * 1.25f;
-                    //BU.GetComponent<UnitControl>().MaxUHp = BU.GetComponent<UnitControl>().MaxUHp * 1.25f;
                     IES();
                     return;
                 }
@@ -207,9 +154,6 @@ public class BatchUnit : MonoBehaviour
                     BU.GetComponent<UnitControl>().UHp = Mathf.RoundToInt(BU.GetComponent<UnitControl>().UHp * 1.25f);
                     BU.GetComponent<UnitControl>().MaxUHp = Mathf.RoundToInt(BU.GetComponent<UnitControl>().MaxUHp * 1.25f);
                     BU.transform.GetChild(1).gameObject.GetComponent<Animator>().Play("ESuccess", -1, 0);
-                    //BU.GetComponent<UnitControl>().UAtk = BU.GetComponent<UnitControl>().UAtk * 1.5f;
-                    //BU.GetComponent<UnitControl>().UHp = BU.GetComponent<UnitControl>().UHp * 1.25f;
-                    //BU.GetComponent<UnitControl>().MaxUHp = BU.GetComponent<UnitControl>().MaxUHp * 1.25f;
                     return;
                 }
                 else
@@ -239,9 +183,6 @@ public class BatchUnit : MonoBehaviour
                     BU.GetComponent<UnitControl>().UHp = Mathf.RoundToInt(BU.GetComponent<UnitControl>().UHp * 1.25f);
                     BU.GetComponent<UnitControl>().MaxUHp = Mathf.RoundToInt(BU.GetComponent<UnitControl>().MaxUHp * 1.25f);
                     BU.transform.GetChild(1).gameObject.GetComponent<Animator>().Play("ESuccess", -1, 0);
-                    //BU.GetComponent<UnitControl>().UAtk = BU.GetComponent<UnitControl>().UAtk * 1.5f;
-                    //BU.GetComponent<UnitControl>().UHp = BU.GetComponent<UnitControl>().UHp * 1.25f;
-                    //BU.GetComponent<UnitControl>().MaxUHp = BU.GetComponent<UnitControl>().MaxUHp * 1.25f;
                     return;
                 }
                 else

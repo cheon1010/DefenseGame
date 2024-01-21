@@ -11,6 +11,8 @@ public class Pause : MonoBehaviour
     GameObject PS;  //일시정지 화면
     GameObject PT;  // 일시정지 텍스트
     public GameObject PauseCanvas;  // 일시정지시 출력되는 캔버스
+
+    public GameObject Option;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +58,8 @@ public class Pause : MonoBehaviour
 
     public void GameResume()
     {
-
+        Time.timeScale = 1;
+        Icon.sprite = PI[0];
+        PS.SetActive(false);
     }
 }

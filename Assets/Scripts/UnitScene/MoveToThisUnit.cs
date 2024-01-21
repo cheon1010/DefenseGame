@@ -25,9 +25,7 @@ public class MoveToThisUnit : MonoBehaviour
         {
             UP = UnitManager.instance.UP[1];
         }
-        //unitsprite.sprite = Unitprefab.GetComponent<UnitControl>().USP;
         unitsprite.sprite = UP.GetComponent<UnitControl>().USP;
-        //UnitName.text = Unitprefab.GetComponent<UnitControl>().UName;
         UnitName.text = UP.GetComponent<UnitControl>().UName;
         if(UP==null)
         {

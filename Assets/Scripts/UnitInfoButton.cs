@@ -21,31 +21,6 @@ public class UnitInfoButton : MonoBehaviour
     void Update()
     {
         BTN.onClick.AddListener(UnitState);
-        /*
-        if(GameManager.instance.UIT==true)
-        {
-            //GameManager.instance.UIT = true;
-            GameManager.instance.UnitSprite.sprite = BatchUnit.GetComponent<UnitControl>().USP;
-            GameManager.instance.UName.text = BatchUnit.GetComponent<UnitControl>().UName;
-            GameManager.instance.UOccupation.text = BatchUnit.GetComponent<UnitControl>().UOccupation;
-            GameManager.instance.UHP.text = BatchUnit.GetComponent<UnitControl>().UHp.ToString() +
-                " / " + BatchUnit.GetComponent<UnitControl>().MaxUHp.ToString();
-            GameManager.instance.UATK.text = BatchUnit.GetComponent<UnitControl>().UAtk.ToString();
-            GameManager.instance.UnitCC.text = BatchUnit.GetComponent<UnitControl>().Max_CC.ToString();
-            GameManager.instance.UCost.text = BatchUnit.GetComponent<UnitControl>().Cost.ToString();
-        }    
-        else
-        {
-            GameManager.instance.UnitSprite.sprite = null;
-            GameManager.instance.UName.text = null;
-            GameManager.instance.UOccupation.text = null;
-            GameManager.instance.UHP.text = null;
-            GameManager.instance.UATK.text = null;
-            GameManager.instance.UnitCC.text = null;
-            GameManager.instance.UCost.text = null;
-        }
-        */
-
     }
 
     public void UnitState()
