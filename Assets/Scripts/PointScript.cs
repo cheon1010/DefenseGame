@@ -24,6 +24,8 @@ public class PointScript : MonoBehaviour
             Debug.Log("몬스터 침입");
             GameManager.instance.EnemyCount += 1;
             GameManager.instance.BaseHPCount -= 1;
+            AudioSource Buzzer = GetComponent<AudioSource>();
+            Buzzer.Play();
         }
 
         else if(collision.gameObject.tag=="EXP")

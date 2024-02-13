@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject OptionPanel;
 
+
     public Text ManaText;
     GameObject BGM;
     AudioSource BattleBGM;
@@ -265,6 +266,7 @@ public class GameManager : MonoBehaviour
             Invoke("SurrenderScene", 1f);
         }
     }
+
     public void SurrenderFunctionNo()
     {
         SPanel.SetActive(false);

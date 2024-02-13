@@ -10,18 +10,32 @@ public class Pause : MonoBehaviour
     public Image Icon;
     GameObject PS;  //일시정지 화면
     GameObject PT;  // 일시정지 텍스트
+    public GameObject DF;  // 게임오버 텍스트
+    GameObject PL;  // 일시정지시 출력되는 버튼들
+    public GameObject GOE; // 게임오버시 나가기버튼
     public GameObject PauseCanvas;  // 일시정지시 출력되는 캔버스
 
     public GameObject Option;
+
+    public static Pause instance;
     // Start is called before the first frame update
     void Start()
     {
-        PauseCanvas.SetActive(false);
         GameManager.instance.SPanel.SetActive(false);
         PS = GameObject.Find("PauseSquare");
         PT = GameObject.Find("Pausetext");
+        DF = GameObject.Find("DefenseFail");
+        PL = GameObject.Find("PauseLayout");
+        GOE = GameObject.Find("GameOverExit");
         Icon.sprite = PI[0];
         PS.SetActive(false);
+        DF.SetActive(false);
+        PauseCanvas.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        instance = this;
     }
 
     // Update is called once per frame
@@ -30,8 +44,20 @@ public class Pause : MonoBehaviour
         TimeScale.text = Time.timeScale.ToString();
         if (PS.active == true)
         {
-            PT.SetActive(true);
-            PauseCanvas.SetActive(true);
+            if(GameManager.instance.BaseHPCount==0)
+            {
+                PT.SetActive(false);
+                PauseCanvas.SetActive(true);
+                PL.SetActive(false);
+                DF.SetActive(true);
+                GOE.SetActive(true);
+            }
+            else
+            {
+                PT.SetActive(true);
+                PauseCanvas.SetActive(true);
+                PL.SetActive(true);
+            }
         }
         else
         {
