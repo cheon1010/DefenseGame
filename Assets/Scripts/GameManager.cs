@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     public Text UATK;   // 유닛 공격력
     public Text UnitCC; // 유닛 저지가능수
     public Text UCost;  // 유닛 배치비용
+    public Text UenchantCost;   // 유닛 강화비용
+    public Text UEnchantPer;    // 유닛 강화확률
     public GameObject NEC;  //배치부족알림창
     public GameObject BannedUnit;   // 배치금지창
     public GameObject PosBanned;    // 좌표금지창
@@ -206,6 +208,8 @@ public class GameManager : MonoBehaviour
             UATK.text = "공격력 :    "+BatchUnit.GetComponent<UnitControl>().UAtk.ToString();
             UnitCC.text = "제어가능수 :   "+BatchUnit.GetComponent<UnitControl>().Max_CC.ToString();
             UCost.text = "배치비용 : "+BatchUnit.GetComponent<UnitControl>().Cost.ToString();
+            UenchantCost.text = "강화비용 : "+BatchUnit.GetComponent<UnitControl>().EnchantCost.ToString();
+            UEnchantPer.text = "강화 성공률 : "+BatchUnit.GetComponent<UnitControl>().EnchantPer.ToString()+"%";
         }
     }
 

@@ -10,12 +10,15 @@ public class BatchUnit : MonoBehaviour
     public Image UnitIcon;
     public Image HPBar;
     public int BUC;
+    public float BUEC;    // À¯´Ö°­È­ºñ¿ë
+    public float BUEP;    // À¯´Ö°­È­È®·ü
     public Sprite UnitIconSprite;
     GameObject UL;
     GameObject BU;
     public GameObject BannedPanel;
     public Button InfoButton;
     public Button EnchantButton;    // °­È­¹öÆ°
+    public int BUECost;
 
     private void Start()
     {
@@ -39,6 +42,8 @@ public class BatchUnit : MonoBehaviour
         UnitIcon.sprite = BU.GetComponent<UnitControl>().UnitSprite;
         UName.text = BU.GetComponent<UnitControl>().UName;
         HPBar.fillAmount = BU.GetComponent<UnitControl>().UHp / BU.GetComponent<UnitControl>().MaxUHp;
+        BUEC = BU.GetComponent<UnitControl>().EnchantCost;
+        BUEP = BU.GetComponent<UnitControl>().EnchantPer;
     }
 
     public void BatchInfoButton()
@@ -63,6 +68,8 @@ public class BatchUnit : MonoBehaviour
                 GameManager.instance.UATK.text = BU.GetComponent<UnitControl>().UAtk.ToString();
                 GameManager.instance.UnitCC.text = BU.GetComponent<UnitControl>().Max_CC.ToString();
                 GameManager.instance.UCost.text = BU.GetComponent<UnitControl>().Cost.ToString();
+                GameManager.instance.UenchantCost.text = BU.GetComponent<UnitControl>().EnchantCost.ToString();
+                GameManager.instance.UEnchantPer.text = BU.GetComponent<UnitControl>().EnchantPer.ToString();
             });
         }
         else
@@ -83,12 +90,15 @@ public class BatchUnit : MonoBehaviour
         GameManager.instance.UATK.text = BU.GetComponent<UnitControl>().UAtk.ToString();
         GameManager.instance.UnitCC.text = BU.GetComponent<UnitControl>().Max_CC.ToString();
         GameManager.instance.UCost.text = BU.GetComponent<UnitControl>().Cost.ToString();
+        GameManager.instance.UenchantCost.text = BU.GetComponent<UnitControl>().EnchantCost.ToString();
+        GameManager.instance.UEnchantPer.text = BU.GetComponent<UnitControl>().EnchantPer.ToString();
     }
 
     public void UnitEnchant()
     {
         if (BU.GetComponent<UnitControl>().Level==1)
         {
+            BUECost = 5;
             if(GameManager.instance.Mana<5)
             {
                 IEF();
@@ -107,6 +117,7 @@ public class BatchUnit : MonoBehaviour
         }
         else if(BU.GetComponent<UnitControl>().Level == 2)
         {
+            BUECost = 15;
             if(GameManager.instance.Mana<15)
             {
                 IEF();
@@ -136,6 +147,7 @@ public class BatchUnit : MonoBehaviour
         }
         else if(BU.GetComponent<UnitControl>().Level==3)
         {
+            BUECost = 35;
             if(GameManager.instance.Mana<35)
             {
                 IEF();
@@ -165,6 +177,7 @@ public class BatchUnit : MonoBehaviour
         }
         else if(BU.GetComponent<UnitControl>().Level==4)
         {
+            BUEC = 55;
             if(GameManager.instance.Mana<55)
             {
                 IEF();

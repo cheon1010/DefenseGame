@@ -18,6 +18,8 @@ public class UnitControl : MonoBehaviour
     public string UOccupation;    // 유닛 직업군
     public bool BT;     // 적과의 전투 트리거
     public float Cost;  // 배치 코스트
+    public int EnchantCost;   // 강화비용
+    public int EnchantPer;    // 강화확률
     public bool CT;     // 적 충돌확인 트리거
 
     public int CC;  // 근접유닛의 현재 저지 카운트
@@ -78,7 +80,26 @@ public class UnitControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        if(gameObject.GetComponent<UnitControl>().Level==1)
+        {
+            EnchantCost = 5;
+            EnchantPer =100;
+        }
+        else if(gameObject.GetComponent<UnitControl>().Level==2)
+        {
+            EnchantCost = 15;
+            EnchantPer =80;
+        }
+        else if (gameObject.GetComponent<UnitControl>().Level == 3)
+        {
+            EnchantCost = 35;
+            EnchantPer =50;
+        }
+        else if (gameObject.GetComponent<UnitControl>().Level == 4)
+        {
+            EnchantCost = 55;
+            EnchantPer =30;
+        }
     }
     
 
@@ -314,6 +335,8 @@ public class UnitControl : MonoBehaviour
             GameManager.instance.UATK.text = "공격력 " + UAtk.ToString();
             GameManager.instance.UnitCC.text = "제어 가능 수 " + Max_CC.ToString();
             GameManager.instance.UCost.text = "배치 비용 " + Cost.ToString();
+            GameManager.instance.UenchantCost.text = " 강화비용 " + Cost.ToString();
+            GameManager.instance.UCost.text = "강화성공률 " + Cost.ToString();
         }
     }
     

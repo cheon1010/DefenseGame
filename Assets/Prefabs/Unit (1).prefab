@@ -277,6 +277,8 @@ MonoBehaviour:
   UOccupation: "\uB514\uD39C\uB354"
   BT: 0
   Cost: 20
+  EnchantCost: 5
+  EnchantPer: 100
   CT: 0
   CC: 0
   Max_CC: 3
